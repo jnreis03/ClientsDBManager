@@ -23,7 +23,9 @@ export default function App(){
 
   async function loadCustomers(){
     const response = await api.get("/customers")
-    setCustomers(response.data);
+      setCustomers(response.data);
+
+ 
   }
 
   async function handleSubmit(event: FormEvent){
@@ -91,28 +93,27 @@ export default function App(){
 
         <section className="flex flex-col gap-4">
 
-          {customers.map( (customer) => (
-            <article 
-            key={customer.id}
-            className="w-full bg-white rounded p-2 relative hover:scale-105 duration-200"
-            >
-            <p><span className="font-medium">Nome:</span> {customer.name}</p>
-            <p><span className="font-medium">Email:</span> {customer.email}</p>
-            <p><span className="font-medium">Status:</span> {customer.status ? "ATIVO" : "INATIVO"}</p>
-
-            <button
-              className='bg-red-500 w-7 h-7 flex items-center justify-center rounded-lg absolute right-0 -top-2 hover:animate-pulse'
-              onClick={() => handleDelete(customer.id)}
-            >
-              <FiTrash size={18} color="#FFF" />
-            </button>
-          </article>
-          ))}
-
+            {customers.map( (customer) => (
+              <article 
+              key={customer.id}
+              className="w-full bg-white rounded p-2 relative hover:scale-105 duration-200"
+              >
+              <p><span className="font-medium">Nome:</span> {customer.name}</p>
+              <p><span className="font-medium">Email:</span> {customer.email}</p>
+              <p><span className="font-medium">Status:</span> {customer.status ? "ATIVO" : "INATIVO"}</p>
+  
+              <button
+                className='bg-red-500 w-7 h-7 flex items-center justify-center rounded-lg absolute right-0 -top-2 hover:animate-pulse'
+                onClick={() => handleDelete(customer.id)}
+              >
+                <FiTrash size={18} color="#FFF" />
+              </button>
+            </article>
+            ))}
+            
+  
 
         </section>
-
-
       </main>
     </div>
   )
